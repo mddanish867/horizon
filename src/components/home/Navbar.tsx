@@ -126,7 +126,7 @@ export default function Navbar() {
             <MobileNavItem label="Loans" />
             <MobileNavItem label="Investments" />
             <a
-              href="login"
+              href="/login"
               className="block px-3 py-2 text-base font-medium text-white hover:text-gray-200 hover:bg-[#f67b86]"
             >
               Login
