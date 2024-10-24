@@ -1,9 +1,11 @@
-import { motion } from "framer-motion";
-import { CreditCard, Banknote, PiggyBank } from "lucide-react";
+'use client'
+
+import { motion } from "framer-motion"
+import { CreditCard, Banknote, PiggyBank } from "lucide-react"
 
 const LandingPage = () => {
   return (
-    <div className="mt-16">
+    <div className="">
       <main className="p-4 max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -102,7 +104,7 @@ const LandingPage = () => {
         </motion.div>
       </main>
     </div>
-  );
-};
+  )
+}
 
-export default LandingPage;
+export default LandingPage

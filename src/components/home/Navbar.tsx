@@ -26,8 +26,8 @@ export default function Navbar() {
   }, [])
 
   return (
-    <div className="bg-[#f5676e]">
-      {/* Top bar */}
+    <div className="min-h-screen bg-[#f5676e]">
+      {/* Top bar - not fixed */}
       <div className="bg-[#f5676e]">
         <div className="container mx-auto py-3 px-4">
           <div className="flex justify-between items-center">
@@ -65,91 +65,97 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Main navbar */}
-      <nav className={`bg-[#f5676e] ${isScrolled ? 'fixed top-0 left-0 right-0  border-b border-white' : ''}`}>
-        <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center py-4">
-            <div className="flex items-center">
-              <a href="/" className="text-2xl font-bold text-white">
-                Horizon
-              </a>
+      {/* Main navbar - sticky */}
+      <div className="sticky top-0 z-50">
+        <nav className={`bg-[#f5676e] ${isScrolled ? 'border-b border-white shadow-lg' : ''}`}>
+          <div className="container mx-auto px-4">
+            <div className="flex justify-between items-center py-4">
+              <div className="flex items-center">
+                <a href="/" className="text-2xl font-bold text-white">
+                  Horizon
+                </a>
+              </div>
+              <div className="hidden lg:flex items-center space-x-8">
+                <NavItem label="Accounts" />
+                <NavItem label="Deposits" />
+                <NavItem label="Payments" />
+                <NavItem label="Cards" />
+                <NavItem label="Loans" />
+                <NavItem label="Investments" />
+                <a href="/login" className="text-white hover:text-gray-200">
+                  Login
+                </a>
+                <a href="/contact-us" className="text-white hover:text-gray-200">
+                  Contact Us
+                </a>
+                <a href="/more" className="text-white hover:text-gray-200">
+                  More
+                </a>
+              </div>
+              <div className="lg:hidden">
+                <button
+                  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                  className="text-white hover:text-gray-200 focus:outline-none"
+                >
+                  <svg
+                    className="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4 6h16M4 12h16M4 18h16"
+                    />
+                  </svg>
+                </button>
+              </div>
             </div>
-            <div className="hidden lg:flex items-center space-x-8">
-              <NavItem label="Accounts" />
-              <NavItem label="Deposits" />
-              <NavItem label="Payments" />
-              <NavItem label="Cards" />
-              <NavItem label="Loans" />
-              <NavItem label="Investments" />
-              <a href="/login" className="text-white hover:text-gray-200">
+          </div>
+        </nav>
+
+        {/* Mobile menu */}
+        {mobileMenuOpen && (
+          <div className="lg:hidden bg-[#f5676e]">
+            <div className="px-2 pt-2 pb-3 space-y-1">
+              <MobileNavItem label="Accounts" />
+              <MobileNavItem label="Deposits" />
+              <MobileNavItem label="Payments" />
+              <MobileNavItem label="Cards" />
+              <MobileNavItem label="Loans" />
+              <MobileNavItem label="Investments" />
+              <a
+                href="/login"
+                className="block px-3 py-2 text-base font-medium text-white hover:text-gray-200 hover:bg-[#f67b86]"
+              >
                 Login
               </a>
-              <a href="/contact-us" className="text-white hover:text-gray-200">
+              <a
+                href="/contactus"
+                className="block px-3 py-2 text-base font-medium text-white hover:text-gray-200 hover:bg-[#f67b86]"
+              >
                 Contact Us
               </a>
-              <a href="/more" className="text-white hover:text-gray-200">
+              <a
+                href="/more"
+                className="block px-3 py-2 text-base font-medium text-white hover:text-gray-200 hover:bg-[#f67b86]"
+              >
                 More
               </a>
             </div>
-            <div className="lg:hidden">
-              <button
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="text-white hover:text-gray-200 focus:outline-none"
-              >
-                <svg
-                  className="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
-              </button>
-            </div>
           </div>
-        </div>
-      </nav>
+        )}
+      </div>
 
-      {/* Mobile menu */}
-      {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#f5676e]">
-          <div className="px-2 pt-2 pb-3 space-y-1">
-            <MobileNavItem label="Accounts" />
-            <MobileNavItem label="Deposits" />
-            <MobileNavItem label="Payments" />
-            <MobileNavItem label="Cards" />
-            <MobileNavItem label="Loans" />
-            <MobileNavItem label="Investments" />
-            <a
-              href="/login"
-              className="block px-3 py-2 text-base font-medium text-white hover:text-gray-200 hover:bg-[#f67b86]"
-            >
-              Login
-            </a>
-            <a
-              href="/contactus"
-              className="block px-3 py-2 text-base font-medium text-white hover:text-gray-200 hover:bg-[#f67b86]"
-            >
-              Contact Us
-            </a>
-            <a
-              href="/more"
-              className="block px-3 py-2 text-base font-medium text-white hover:text-gray-200 hover:bg-[#f67b86]"
-            >
-              More
-            </a>
-          </div>
-        </div>
-      )}
+      {/* Content wrapper with padding for sticky navbar */}
+      <div className="pt-4">
+        <LandingPage />
+      </div>
 
-      {/* Hero section placeholder */}
-      {/* <div className="bg-[#f5676e] min-h-screen"></div> */}
-      <LandingPage/>
+      {/* NavItem and MobileNavItem components */}
+      {/* ... rest of the NavItem and MobileNavItem component code ... */}
     </div>
   )
 }
