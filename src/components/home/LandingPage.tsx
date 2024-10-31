@@ -5,7 +5,7 @@ import { CreditCard, Banknote, PiggyBank } from "lucide-react"
 
 const LandingPage = () => {
   return (
-    <div className="">
+    <div className="py-20">
       <main className="p-4 max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
